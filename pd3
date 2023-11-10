@@ -21,6 +21,122 @@ for length in movies.duration:
 
       booleans.append(True)
 
+
+
+                                             OUTPUT
+
+
+Dataframe of top-rated IMDb movies: 
+   star_rating                     title content_rating   genre  duration  \
+0          9.3  The Shawshank Redemption              R   Crime       142   
+1          9.2             The Godfather              R   Crime       175   
+2          9.1    The Godfather: Part II              R   Crime       200   
+3          9.0           The Dark Knight          PG-13  Action       152   
+4          8.9              Pulp Fiction              R   Crime       154   
+
+                                         actors_list  
+0  [u'Tim Robbins', u'Morgan Freeman', u'Bob Gunt...  
+1    [u'Marlon Brando', u'Al Pacino', u'James Caan']  
+2  [u'Al Pacino', u'Robert De Niro', u'Robert Duv...  
+3  [u'Christian Bale', u'Heath Ledger', u'Aaron E...  
+4  [u'John Travolta', u'Uma Thurman', u'Samuel L....  
+
+Different ways to filter rows of a pandas DataFrame by column value: 
+Example : Filter rows to only show movies with a duration of atleast 200 minutes
+1.using for loop
+0    True
+1    True
+2    True
+3    True
+4    True
+dtype: bool
+
+2.broadcasting
+     star_rating                                          title  \
+2            9.1                         The Godfather: Part II   
+7            8.9  The Lord of the Rings: The Return of the King   
+17           8.7                                  Seven Samurai   
+78           8.4                    Once Upon a Time in America   
+85           8.4                             Lawrence of Arabia   
+142          8.3              Lagaan: Once Upon a Time in India   
+157          8.2                             Gone with the Wind   
+204          8.1                                        Ben-Hur   
+445          7.9                           The Ten Commandments   
+476          7.8                                         Hamlet   
+630          7.7                                      Malcolm X   
+767          7.6                It's a Mad, Mad, Mad, Mad World   
+
+    content_rating      genre  duration  \
+2                R      Crime       200   
+7            PG-13  Adventure       201   
+17         UNRATED      Drama       207   
+78               R      Crime       229   
+85              PG  Adventure       216   
+142             PG  Adventure       224   
+157              G      Drama       238   
+204              G  Adventure       212   
+445       APPROVED  Adventure       220   
+476          PG-13      Drama       242   
+630          PG-13  Biography       202   
+767       APPROVED     Action       205   
+
+                                           actors_list  
+2    [u'Al Pacino', u'Robert De Niro', u'Robert Duv...  
+7    [u'Elijah Wood', u'Viggo Mortensen', u'Ian McK...  
+17   [u'Toshir\xf4 Mifune', u'Takashi Shimura', u'K...  
+78   [u'Robert De Niro', u'James Woods', u'Elizabet...  
+85   [u"Peter O'Toole", u'Alec Guinness', u'Anthony...  
+142  [u'Aamir Khan', u'Gracy Singh', u'Rachel Shell...  
+157  [u'Clark Gable', u'Vivien Leigh', u'Thomas Mit...  
+204  [u'Charlton Heston', u'Jack Hawkins', u'Stephe...  
+445  [u'Charlton Heston', u'Yul Brynner', u'Anne Ba...  
+476  [u'Kenneth Branagh', u'Julie Christie', u'Dere...  
+630  [u'Denzel Washington', u'Angela Bassett', u'De...  
+767  [u'Spencer Tracy', u'Milton Berle', u'Ethel Me...  
+
+3.using 'loc' method
+     star_rating                                          title  \
+2            9.1                         The Godfather: Part II   
+7            8.9  The Lord of the Rings: The Return of the King   
+17           8.7                                  Seven Samurai   
+78           8.4                    Once Upon a Time in America   
+85           8.4                             Lawrence of Arabia   
+142          8.3              Lagaan: Once Upon a Time in India   
+157          8.2                             Gone with the Wind   
+204          8.1                                        Ben-Hur   
+445          7.9                           The Ten Commandments   
+476          7.8                                         Hamlet   
+630          7.7                                      Malcolm X   
+767          7.6                It's a Mad, Mad, Mad, Mad World   
+
+    content_rating      genre  duration  \
+2                R      Crime       200   
+7            PG-13  Adventure       201   
+17         UNRATED      Drama       207   
+78               R      Crime       229   
+85              PG  Adventure       216   
+142             PG  Adventure       224   
+157              G      Drama       238   
+204              G  Adventure       212   
+445       APPROVED  Adventure       220   
+476          PG-13      Drama       242   
+630          PG-13  Biography       202   
+767       APPROVED     Action       205   
+
+                                           actors_list  
+2    [u'Al Pacino', u'Robert De Niro', u'Robert Duv...  
+7    [u'Elijah Wood', u'Viggo Mortensen', u'Ian McK...  
+17   [u'Toshir\xf4 Mifune', u'Takashi Shimura', u'K...  
+78   [u'Robert De Niro', u'James Woods', u'Elizabet...  
+85   [u"Peter O'Toole", u'Alec Guinness', u'Anthony...  
+142  [u'Aamir Khan', u'Gracy Singh', u'Rachel Shell...  
+157  [u'Clark Gable', u'Vivien Leigh', u'Thomas Mit...  
+204  [u'Charlton Heston', u'Jack Hawkins', u'Stephe...  
+445  [u'Charlton Heston', u'Yul Brynner', u'Anne Ba...  
+476  [u'Kenneth Branagh', u'Julie Christie', u'Dere...  
+630  [u'Denzel Washington', u'Angela Bassett', u'De...  
+767  [u'Spencer Tracy', u'Milton Berle', u'Ethel Me...  
+
 else:
 
      booleans.append(False)
