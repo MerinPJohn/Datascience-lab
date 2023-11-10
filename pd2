@@ -1,0 +1,128 @@
+import pandas as pd #read a csv file
+ufo = pd.read_csv('http://bit.ly/uforeports')
+print("Overview of UFO data reports: ")
+print(ufo.head())
+
+print()
+
+#series
+
+print("Cityseries(sorted):")
+print(ufo.City.sort_values())
+print()
+
+ufo['Location'] = ufo.City + ', ' + ufo.State
+print("After creating a new 'Location' Series : ")
+print(ufo.head())
+
+print()
+
+print("Calculate summary statistics : ")
+print(ufo.describe())
+
+print()
+
+print("Column names of ufo dataframe : ",ufo.columns)
+print()
+
+# rename two of the columns by using the 'rename' method ufo.rename(columns={'Colors Reported':'Colors_Reported', 'Shape Reported':'Shape_Reported'},inplace=True)
+
+print("Column name of ufo dataframe after renaming two column names : ",ufo.columns)
+
+print()
+
+# remove multiple columns at once ufo.drop(['City', 'State'], axis=1, inplace=True)
+
+print("Column name of ufo dataframe after removing two columns(city,state) : ",ufo.columns)
+
+print()
+
+# remove multiple rows at once (axis=0 refers to rows)
+
+ufo.drop([0, 1], axis=0, inplace=True)
+
+print("ufo dataframe after deleting first two rows: ")
+print(ufo.head())
+
+
+
+                                               OUTPUT
+
+
+
+Overview of UFO data reports: 
+                   City Colors Reported Shape Reported State             Time
+0                Ithaca             NaN       TRIANGLE    NY   6/1/1930 22:00
+1           Willingboro             NaN          OTHER    NJ  6/30/1930 20:00
+2               Holyoke             NaN           OVAL    CO  2/15/1931 14:00
+3               Abilene             NaN           DISK    KS   6/1/1931 13:00
+4  New York Worlds Fair             NaN          LIGHT    NY  4/18/1933 19:00
+
+Cityseries(sorted):
+1761     Abbeville
+17809     Aberdeen
+2297      Aberdeen
+9404      Aberdeen
+389       Aberdeen
+           ...    
+12441          NaN
+15767          NaN
+15812          NaN
+16054          NaN
+16608          NaN
+Name: City, Length: 18241, dtype: object
+
+After creating a new 'Location' Series : 
+                   City Colors Reported Shape Reported State             Time  \
+0                Ithaca             NaN       TRIANGLE    NY   6/1/1930 22:00   
+1           Willingboro             NaN          OTHER    NJ  6/30/1930 20:00   
+2               Holyoke             NaN           OVAL    CO  2/15/1931 14:00   
+3               Abilene             NaN           DISK    KS   6/1/1931 13:00   
+4  New York Worlds Fair             NaN          LIGHT    NY  4/18/1933 19:00   
+
+                   Location  
+0                Ithaca, NY  
+1           Willingboro, NJ  
+2               Holyoke, CO  
+3               Abilene, KS  
+4  New York Worlds Fair, NY  
+
+Calculate summary statistics : 
+           City Colors Reported Shape Reported  State              Time  \
+count     18215            2882          15597  18241             18241   
+unique     6475              27             27     52             16145   
+top     Seattle             RED          LIGHT     CA  11/16/1999 19:00   
+freq        187             780           2803   2529                27   
+
+           Location  
+count         18215  
+unique         8028  
+top     Seattle, WA  
+freq            187  
+
+Column names of ufo dataframe :  Index(['City', 'Colors Reported', 'Shape Reported', 'State', 'Time',
+       'Location'],
+      dtype='object')
+
+Column name of ufo dataframe after renaming two column names :  Index(['City', 'Colors Reported', 'Shape Reported', 'State', 'Time',
+       'Location'],
+      dtype='object')
+
+Column name of ufo dataframe after removing two columns(city,state) :  Index(['City', 'Colors Reported', 'Shape Reported', 'State', 'Time',
+       'Location'],
+      dtype='object')
+
+ufo dataframe after deleting first two rows: 
+                   City Colors Reported Shape Reported State             Time  \
+2               Holyoke             NaN           OVAL    CO  2/15/1931 14:00   
+3               Abilene             NaN           DISK    KS   6/1/1931 13:00   
+4  New York Worlds Fair             NaN          LIGHT    NY  4/18/1933 19:00   
+5           Valley City             NaN           DISK    ND  9/15/1934 15:30   
+6           Crater Lake             NaN         CIRCLE    CA   6/15/1935 0:00   
+
+                   Location  
+2               Holyoke, CO  
+3               Abilene, KS  
+4  New York Worlds Fair, NY  
+5           Valley City, ND  
+6           Crater Lake, CA 
