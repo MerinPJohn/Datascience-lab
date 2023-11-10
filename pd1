@@ -11,3 +11,25 @@ users = pd.read_table('http://bit.ly/movieusers', sep='|', header=None, names=us
 
 print("Dataframe after modifying the default parameter values for read_table: ")
 print(users.head())
+
+
+
+                              OUTPUT
+
+
+Overview of dataframe : 
+   1|24|M|technician|85711
+0       2|53|F|other|94043
+1      3|23|M|writer|32067
+2  4|24|M|technician|43537
+3       5|33|F|other|15213
+4   6|42|M|executive|98101
+Shape :  (942, 1)
+
+Dataframe after modifying the default parameter values for read_table: 
+   user_id  age gender  occupation zip_code
+0        1   24      M  technician    85711
+1        2   53      F       other    94043
+2        3   23      M      writer    32067
+3        4   24      M  technician    43537
+4        5   33      F       other    15213
