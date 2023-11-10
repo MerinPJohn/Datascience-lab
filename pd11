@@ -1,0 +1,104 @@
+import pandas as pd
+# read a dataset of UFO reports into a DataFrame
+print("'inplace'parameter in pandas: ")
+print()
+ufo = pd.read_csv('http://bit.ly/uforeports')
+print("Dataframe: ")
+print(ufo.head())
+print("Shape : ",ufo.shape)
+print()
+# remove the 'City' column (doesn't affect the DataFrame since inplace=False)
+ufo.drop('City', axis=1)
+# confirm that the 'City' column was not actually removed
+print(ufo.columns)
+print()
+# remove the 'City' column (does affect the DataFrame since inplace=True)
+ufo.drop('City', axis=1, inplace=True)
+# confirm that the 'City' column was actually removed
+print(ufo.columns)
+print()
+print(ufo.shape)
+print()
+#drop a row if any value is missing from that row (doesn't affect the DataFrame since
+#inplace=False)
+ufo.dropna(how='any')
+# confirm that no rows were actually removed
+print(ufo.shape)
+print()
+print("Using an assignment statement instead of the 'inplace' parameter: ")
+ufo = ufo.set_index('Time')
+print(ufo.tail(3))
+print()
+print("Fill missing values using 'backward fill' strategy: ")
+# doesn't affect the DataFrame since inplace=False
+print(ufo.fillna(method='bfill').tail(3))
+print()
+print("Dataframe: ")
+print(ufo.tail(3))
+print()
+print("Fill missing values using 'forward fill' strategy: ")
+#doesn't affect the DataFrame since inplace=False
+print(ufo.fillna(method='ffill').tail(3))
+print()
+print("Dataframe: ")
+print(ufo.tail(3))
+
+
+
+                                            OUTPUT
+
+
+
+  'inplace'parameter in pandas: 
+
+Dataframe: 
+                   City Colors Reported Shape Reported State             Time
+0                Ithaca             NaN       TRIANGLE    NY   6/1/1930 22:00
+1           Willingboro             NaN          OTHER    NJ  6/30/1930 20:00
+2               Holyoke             NaN           OVAL    CO  2/15/1931 14:00
+3               Abilene             NaN           DISK    KS   6/1/1931 13:00
+4  New York Worlds Fair             NaN          LIGHT    NY  4/18/1933 19:00
+Shape :  (18241, 5)
+
+Index(['City', 'Colors Reported', 'Shape Reported', 'State', 'Time'], dtype='object')
+
+Index(['Colors Reported', 'Shape Reported', 'State', 'Time'], dtype='object')
+
+(18241, 4)
+
+(18241, 4)
+
+Using an assignment statement instead of the 'inplace' parameter: 
+                 Colors Reported Shape Reported State
+Time                                                 
+12/31/2000 23:45             NaN            NaN    WI
+12/31/2000 23:45             RED          LIGHT    WI
+12/31/2000 23:59             NaN           OVAL    FL
+
+Fill missing values using 'backward fill' strategy: 
+                 Colors Reported Shape Reported State
+Time                                                 
+12/31/2000 23:45             RED          LIGHT    WI
+12/31/2000 23:45             RED          LIGHT    WI
+12/31/2000 23:59             NaN           OVAL    FL
+
+Dataframe: 
+                 Colors Reported Shape Reported State
+Time                                                 
+12/31/2000 23:45             NaN            NaN    WI
+12/31/2000 23:45             RED          LIGHT    WI
+12/31/2000 23:59             NaN           OVAL    FL
+
+Fill missing values using 'forward fill' strategy: 
+                 Colors Reported Shape Reported State
+Time                                                 
+12/31/2000 23:45             RED           DISK    WI
+12/31/2000 23:45             RED          LIGHT    WI
+12/31/2000 23:59             RED           OVAL    FL
+
+Dataframe: 
+                 Colors Reported Shape Reported State
+Time                                                 
+12/31/2000 23:45             NaN            NaN    WI
+12/31/2000 23:45             RED          LIGHT    WI
+12/31/2000 23:59             NaN           OVAL    FL
